@@ -1,0 +1,365 @@
+
+<!-- NAVIGATION BAR FROM MDB STARTS HERE -->
+
+<?php 
+$activePage = basename($_SERVER['PHP_SELF'],".html");
+//echo $activePage;
+//$current = 'snpbrowser';
+include 'header.html';
+
+?>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="js/typeahead/0.11.1/typeahead.jquery.min.js"></script>
+<script  type="text/javascript" src="js/typeahead/0.11.1/typeahead.bundle.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    // Sonstructs the suggestion engine
+    var genes = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // The url points to a json file that contains an array of country names
+        prefetch: 'js/typeahead_rn6.json'
+    });
+    
+    // Initializing the typeahead with remote dataset
+    $('.typeahead').typeahead(null, {
+        name: 'genes',
+        source: genes,
+        limit: 10 /* Specify maximum number of suggestions to be displayed */
+    });
+});  
+</script>
+<style type="text/css">
+.bs-example {
+	font-family: sans-serif;
+	position: relative;
+	margin: 10px;
+}
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	font-size: 22px; /* Set input font size */
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 396px;
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #0097CF;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+}
+.tt-suggestion {
+	font-size: 22px;  /* Set suggestion dropdown font size */
+	padding: 3px 20px;
+}
+.tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+</style>
+<!-- NAVIGATION BAR FROM MDB ENDS HERE -->
+
+<!--///////////////////////////////////////////////-->
+
+<!-- -------------------- -->
+<!-- Default form subscription -->
+<!--<form class="text-center border border-light p-5">-->
+
+                                <!--<form action=" " method="get">-->
+                                <form name="inputLGEx" action="search.html " method="get" class="text-center border border-light p-5">
+                                    <p class="h4 mb-4">Omics Portal For Addiction Research</p>
+ <div class="bs-example">
+<!--<input type="search" name="Gene" id="form-autocomplete" class="typeahead tt-query" autocomplete="off" spellcheck="false">-->
+<input type="search" name="gene" id="form-autocomplete" class="typeahead tt-query" autocomplete="off" spellcheck="false" value="<?php echo $_GET['Gene']; ?>">
+<!--<label for="form-autocomplete" class="active">Enter gene. Ex: Grm1, Shh</label>-->
+</div>
+
+                    
+            <!--<div class="input-group md-form form-sm form-2 pl-0">
+              <input class="form-control my-0 py-1 grey-border" type="text" name="gene" placeholder="Search for Gene" aria-label="Search">
+    		<div class="input-group-append">
+        	  <span class="input-group-text grey lighten-3" id="basic-text1"><i class="fa fa-search text-grey" aria-hidden="true"></i></span>
+        	</div>-->
+        	
+	        </div>
+	        <p>Enter gene. Ex:
+	        <a href="http://www.opar.io/search.html?gene=CTRC&choose_species=Species.Id">CTRC</a>, 
+	        <a href="http://www.opar.io/search.html?gene=PECR&choose_species=Species.Id">PECR</a>,
+	        <a href="http://www.opar.io/search.html?gene=THY1&choose_species=Species.Id">THY1</a></p>
+	        <div>
+               <label class="radio-inline">
+               <input type="radio" name="choose_species" id="Species.Id" value="Species.Id" checked> ANY
+               <input type="radio" name="choose_species" id="4" value="4" > Human
+               <input type="radio" name="choose_species" id="1" value="1" > Mouse
+               <input type="radio" name="choose_species" id="2" value="2" > Rat
+ 			   </label>
+             </div>
+             <!-- Loading -->
+             <div id="success"></div>
+                    <!-- For success/fail messages -->
+                    <!--<button type="submit" class="btn btn-primary" onclick="delaySubmit(); return false; " />Submit Registration</button>-->
+                   <button type="submit" class="btn btn-primary">Search</button>
+                    <!--<button type="submit" class="btn btn-primary" disabled>Search</button>-->
+                    <div id="content"></div>
+             <!-- Loading ENDS HERE -->
+                         </form>
+
+    </div>
+<!-- Default form subscription -->
+<!--<hr class="my-4">-->
+<div class="container">
+<div class='row'>
+    <!-- Card deck -->
+<div class="card-deck">
+
+  <!-- Card GENE/PROTEIN STARTS HERE-->
+  <div class="card mb-4">
+
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="img/Gene-Protein-Data_781x521.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!--Title-->
+      <h4 class="card-title">Gene/Protein Data</h4>
+      <!--Text-->
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-light-blue btn-md">More</button>
+
+    </div>
+
+  </div>
+  
+  <!-- Card RODENT MODELS START HERE-->
+  <div class="card mb-4">
+
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="img/rodent_models2.jpg" alt="rodent models">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!--Title-->
+      <h4 class="card-title">Rodent Models</h4>
+      <!--Text-->
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-light-blue btn-md">More</button>
+
+    </div>
+
+  </div>
+  <!-- Card RODENT MODELS ENDS HERE-->
+  
+  
+    <!-- Card NEWS STARTS HERE-->
+  <div class="card mb-4">
+
+    <!--Card image-->
+    <!--<div class="view overlay">
+      <img class="card-img-top" src="img/News.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>-->
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!--Title-->
+      <h4 class="card-title">Latest News</h4>
+      <!--Text-->
+      <div class="pre-scrollable">
+      <p class="card-text"><a class="twitter-timeline" href="https://twitter.com/OPARProject">Tweets by OPAR</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </p>
+      </div>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <!--<button type="button" class="btn btn-light-blue btn-md">More</button>-->
+
+    </div>
+
+  </div>
+  <!-- Card NEWS ENDS HERE-->
+
+
+</div>
+<!-- Card deck -->
+
+<!--SECOND CARD DECK-->
+<!-- Card deck -->
+<div class="card-deck">
+
+ <!-- Card GENE/PROTEIN ENDS HERE-->
+
+  <!-- Card HUMAN ADDICTION STARTS HERE-->
+  <div class="card mb-4">
+
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="img/Human_Addiction.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!--Title-->
+      <h4 class="card-title">Human Addiction</h4>
+      <!--Text-->
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-light-blue btn-md">More</button>
+
+    </div>
+
+  </div>
+  <!-- Card HUMAN ADDICTION ENDS HERE-->
+  
+
+  <!-- Card RELATED RODENT RESEARCH RESOURCES STARTS HERE-->
+  <div class="card mb-4">
+
+    <!--Card image-->
+   <!-- <div class="view overlay">
+      <img class="card-img-top" src="img/Other_Resources_2.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>-->
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!--Title-->
+      <h4 class="card-title">Related Rodent Research Resources</h4>
+      <!--Text-->
+      <p class="card-text">
+      <ul class="list-group">
+  <li class="list-group-item text-left"><a href="https://rgd.mcw.edu/" target="_blank">RGD</a></li>
+  <li class="list-group-item text-left"><a href="http://ratgenes.org" target="_blank">NIDA Center for GWAS in Outbred Rats</a></li>
+  <li class="list-group-item text-left"><a href="https://www.jax.org/research-and-faculty/tools/systems-neurogenetics" target="_blank">NIDA Center for Systems Neurogenetics of Addiction</a></li>
+  <li class="list-group-item text-left"><a href="http://www.rrrc.us/" target="_blank">Rat Resource & Research Center</a></li>
+  <li class="list-group-item text-left"><a href="http://www.syphad.org/" target="_blank">SYPHAD</a></li>
+  <li class="list-group-item text-left"><a href="http://www.chemnetdb.org/" target="_blank">ChemNetDB</a></li>
+</ul></p>
+      
+     
+
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-light-blue btn-md">More</button>
+
+    </div>
+
+  </div>
+  <!-- Card RELATED RODENT RESEARCH RESOURCES ENDS HERE-->
+
+ <!-- Card ADVANCED TOOLS STARTS HERE-->
+  <div class="card mb-4">
+
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="img/Advanced_Tools_p.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!--Title-->
+      <h4 class="card-title">Advanced Tools</h4>
+      <!--Text-->
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-light-blue btn-md">More</button>
+
+    </div>
+
+  </div>
+  <!-- Card ADVANCED TOOLS ENDS HERE-->
+
+</div>
+<!-- Card deck -->
+</div>
+</div>
+
+    <!--<button type="button" class="btn btn-blue waves-effect">Buy now <span class="fa fa-diamond ml-1"></span></button>
+    <button type="button" class="btn btn-outline-primary waves-effect">Download <i class="fa fa-download ml-1"></i></button>-->
+    
+
+    
+   
+
+</div>
+<!--Jumbotron-->
+<!--///////////////////////////////////////////////-->
+
+<?php
+include 'footer.html';
+?>
+
+
+<!-- Footer -->
+<!--<footer class="page-footer font-small blue">-->
+
+  <!-- Copyright -->
+  <!--<div class="footer-copyright text-center py-3">OPAR University of Tennessee Health Science Center
+  <p class="pull-right"><a href="#">Back to top</a></p>
+  </div>-->
+  <!-- Copyright -->
+
+<!--</footer>-->
+<!-- Footer -->
+
+    <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <!--<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>-->
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/pagination.js"></script>
+ <!--</div>-->
+</body>
+</html>

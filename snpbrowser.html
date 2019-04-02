@@ -1,0 +1,925 @@
+<!-- NAVIGATION BAR FROM MDB STARTS HERE -->
+<?php 
+$activePage = basename($_SERVER['PHP_SELF'],".html");
+//echo $activePage;
+include 'header.html';
+?>
+<link href="intro.js-2.9.3/introjs.css" rel="stylesheet">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="js/typeahead/0.11.1/typeahead.jquery.min.js"></script>
+<script  type="text/javascript" src="js/typeahead/0.11.1/typeahead.bundle.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    // Sonstructs the suggestion engine
+    var genes = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // The url points to a json file that contains an array of country names
+        prefetch: 'js/typeahead_rn6.json'
+    });
+    
+    // Initializing the typeahead with remote dataset
+    $('.typeahead').typeahead(null, {
+        name: 'genes',
+        source: genes,
+        limit: 10 /* Specify maximum number of suggestions to be displayed */
+    });
+});  
+</script>
+<style type="text/css">
+.bs-example {
+	font-family: sans-serif;
+	position: relative;
+	margin: 10px;
+}
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	font-size: 22px; /* Set input font size */
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 300px;
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #0097CF;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 300px;
+}
+.tt-suggestion {
+	font-size: 22px;  /* Set suggestion dropdown font size */
+	padding: 3px 20px;
+}
+.tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+</style>
+<!-- NAVIGATION BAR FROM MDB ENDS HERE -->
+<p></p>
+<blockquote class="blockquote">
+<h2>Variant Browser</h2>
+<h6>Search the OPAR variant browser using any combination of the filtering options below.<!--<small>secondary text</small>--> <a href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a></h6>
+</blockquote>
+<!--<p><a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a></p>-->
+<!--@@@@@@@@@@<h1 data-step="1" data-intro="This is a tooltip!">Basic Usage</h1>-->
+<form action="snpbrowser.html" method="get" class="text-center border border-light p-5">
+<!--<p class="h4 mb-4">Variant Browser</p>-->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <!--<form action="snpbrowser_clean.html" method="get" class="text-center border border-light p-5">-->
+    <label>Type:</label>
+    <select class="form-control" name="inputsnp-indel" id="inputsnp-indel" disabled>
+<option value="snp">SNP</option>
+<option value="indel">InDel</option>
+</select>
+<!--<P><label>Gene:</label><input type="text" name="Gene" value="<?php echo $_GET['Gene']; ?>" id="inputGene" class="form-control form-control-lg" placeholder="ex: Grm1, Shh"><p>-->
+<!--AUTOCOMPLETE-->
+<!--<div class="md-form">-->
+<!--<input type="search" name="Gene" value="<?php echo $_GET['Gene']; ?>" id="form-autocomplete" class="form-control mdb-autocomplete">-->
+<!--<input type="search" name="Gene" id="form-autocomplete" class="form-control mdb-autocomplete">-->
+ <div class="bs-example" data-step="1" data-intro="<strong>Option 1:</strong> Enter the name of your gene. Example: <strong>Grm1</strong> and click the <strong>search button</strong>.">
+<!--<input type="search" name="Gene" id="form-autocomplete" class="typeahead tt-query" autocomplete="off" spellcheck="false">-->
+<input type="search" name="Gene" id="form-autocomplete" class="typeahead tt-query" autocomplete="off" spellcheck="false" value="<?php echo $_GET['Gene']; ?>">
+<label for="form-autocomplete" class="active">Enter gene. Ex: Grm1, Shh</label>
+</div>
+ <!--<div class="bs-example">
+		<h2>Enter your gene name</h2>
+        <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false">
+    </div>-->
+
+<!--AUTOCOMPLETE-->
+    <!--<HR>-->
+    <!--<p><label>Chr:</label>-->
+    <p data-step="2" data-intro="<strong>Option 2:</strong> Select Chromosome">
+    <select class="form-control" name="Chromosome" value="<?php echo $_GET['Chromosome']; ?>" id="inputChromosome">
+<option value="Chromo">Chr</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="X">X</option>
+</select>
+        </p>
+        <!--<p>
+            <label for="inputStart">Mb start</label>
+            <input type="text" name="mbstart" id="inputmbstart">
+        </p>
+        <p>
+            <label for="inputEnd">Mb end</label>
+            <input type="text" name="mbend" id="inputmbend">
+        </p>-->
+<P data-step="3" data-intro="Enter the numeric value in megabases for the <strong>start location</strong>. Example: 4.753141"><label">Mb start:</label><input type="text" name="mbstart" value="<?php echo $_GET['mbstart']; ?>" id="inputmbstart" class="form-control form-control-lg">
+<P data-step="4" data-intro="Enter the numeric value in megabases for the <strong>end location.</strong> Example: 5.165859 and click the <strong>search button</strong>."><label">Mb end:</label><input type="text" name="mbend" value="<?php echo $_GET['mbend']; ?>" id="inputmbend" class="form-control form-control-lg"></P>
+   
+</div>
+<div class="col-sm">
+<p>
+<label">Strains:</label>
+<p>
+<select id="s1" name="possible" width="200" style="width: 200px" SIZE="6" MULTIPLE disabled>
+<option value="BN">BN</option>
+<option value="F344">F344</option>
+<option value="ACI">ACI</option>
+<option value="BBDP">BBDP</option>
+<option value="FHH">FHH</option>
+<option value="FHL">FHL</option>
+<option value="GK">GK</option>
+<option value="LE">LE</option>
+<option value="LEW">LEW</option>
+<option value="LH">LH</option>
+<option value="LL">LL</option>
+<option value="LN">LN</option>
+<option value="MHS">MHS</option>
+<option value="MNS">MNS</option>
+<option value="SBH">SBH</option>
+<option value="SBN">SBN</option>
+<option value="SHR">SHR</option>
+<option value="SHRSP">SHRSP</option>
+<option value="SR">SR</option>
+<option value="SS">SS</option>
+<option value="WAG">WAG</option>
+<option value="WLI">WLI</option>
+<option value="WMI">WMI</option>
+<option value="WKY">WKY</option>
+</select>
+<script type="text/javascript">
+
+function change(arr) {
+var el = document.getElementById('s1');
+el.options.length = 0;
+for(var i = 0; i< arr.length; i++ ) {
+el.options[el.options.length] = new Option( arr[i], arr[i]);
+}
+}
+</script>
+    
+ <p>
+<INPUT TYPE="BUTTON" id="b1" VALUE="Add"
+       ONCLICK="MyMoveItem(possible,wishlist);">
+<p>
+<label">Limit to:</label>
+<p>
+  <SELECT id="s2" NAME="wishlist" width="200" style="width: 200px" SIZE="6" MULTIPLE>
+</SELECT>
+<p>
+<INPUT TYPE="BUTTON" id="b2" VALUE="Remove" 
+       ONCLICK="MyMoveItem(wishlist,possible);">
+             <P>
+<script type="text/javascript">
+$("#b1").click(function(){
+$("#s2").append( $("#s1 option:selected"))
+})
+
+$("#b2").click(function(){
+$("#s1").append( $("#s2 option:selected"))
+})
+</script>
+     
+	</P>
+	<div>
+ 			 <label class="radio-inline">
+ 			   <!--<form id="formName" action="snpbrowser.html" method="get">-->
+ 			   <input type="radio" name="choose_species" id="2" value="2" onclick='change(["BN", "F344", "ACI", "BBDP", "FHH", "FHL", "GK", "LE", "LEW", "LH", "LL", "LN", "MHS", "MNS", "SBH", "SBN", "SHR", "SHRSP", "SR", "SS", "WAG", "WLI", "WMI", "WKY"]) ' checked> Rat <small>(rn6)</small>
+ 			   <input type="radio" name="choose_species" id="1" value="1" onclick='change(["129S1/SvImJ", "129S4/SvJae", "129S6/SvEv", "129T2/SvEmsJ", "129X1/SvJ", "A/J", "AKR/J", "BALB/cByJ", "BALB/cJ", "BPH/2J", "BPL/1J", "BPN/3J", "BUB/BnJ", "C3H/HeJ", "C3HeB/FeJ", "C57BL/10J", "C57BL/6ByJ", "C57BL/6J", "C57BL/6NJ", "C57BLKS/J", "C57BR/cdJ", "C57L/J", "C58/J", "CALB/RkJ", "CAST/EiJ", "CBA/J", "CE/J", "CZECHII/EiJ", "DBA/1J", "DBA/2J", "DDK/Pas", "DDY/JclSidSeyFrkJ", "EL/SuzSeyFrkJ", "FVB/NJ", "I/LnJ", "ILS/IbgTejJ", "IS/CamRkJ", "JF1/Ms", "KK/HlJ", "LEWES/EiJ", "LG/J", "LP/J", "MA/MyJ", "MAI/Pas", "MOLF/EiJ", "MOLG/DnJ", "MRL/MpJ", "MSM/Ms", "NOD/ShiLtJ", "NON/LtJ", "NOR/LtJ", "NZB/BlNJ", "NZL/LtJ", "NZO/HlLtJ", "NZW/LacJ", "P/J", "PERA/EiJ", "PERC/EiJ", "PL/J", "PWD/PhJ", "PWK/PhJ", "Qsi5", "RBA/DnJ", "RF/J", "RIIIS/J", "SEA/GnJ", "SEG/Pas", "SJL/J", "SKIVE/EiJ", "SM/J", "SOD1/EiJ", "SPRET/EiJ", "ST/bJ", "SWR/J", "TALLYHO/JngJ", "WSB/EiJ", "ZALENDE/EiJ"]) '> Mouse <small>(mm10)</small>
+ 			   </label>
+
+             </div>
+             <!-- Loading -->
+             <div id="success"></div>
+                    <!-- For success/fail messages -->
+                    <!--<button type="submit" class="btn btn-primary" onclick="delaySubmit(); return false; " />Submit Registration</button>-->
+                   <!--<button type="reset" value="Reset">Reset</button>-->
+                   <button type="submit" class="btn btn-primary">Search</button>
+                    <!--<button type="submit" class="btn btn-primary" disabled>Search</button>-->
+            <div id="div2">
+			<img src="img/800.gif"><br><strong>Processing... Please Wait. This could take up to 30 seconds!</strong>
+			 </div>
+<!--<button type="submit" class="btn btn-primary">Search</button>-->
+<!--<input type="submit" value="Submit">-->
+<!--<div id="div2">
+<img src="img/800.gif"><br><strong>Processing... Please Wait. This could take up to 30 seconds!</strong>
+</div>-->
+</div>
+<div class="col-sm">
+<p><label">Domain:</label><p>
+<!--<select name="domain" size="4">-->
+<select class="form-control" name="Domain" value="<?php echo $_GET['Domain']; ?>" id="inputDomain">
+<option value="All" selected="">All</option>
+<option value="Exon">Exon</option>
+<option value="5' UTR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5' UTR</option>
+<option value="Coding">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coding Region</option>
+<option value="3' UTR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3' UTR</option>
+<option value="Intron">Intron</option>
+<option value="Splice Site">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Splice Site</option>
+<option value="Nonsplice Site">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nonsplice Site</option>
+<option value="Upstream">Upstream</option>
+<option value="Downstream">Downstream</option>
+<option value="Intergenic">Intergenic</option>
+</select><p>
+<label>Function:</label><p>
+<select name="function" size="3" disabled>
+<option value="All" selected="">All</option>
+<option value="Nonsynonymous">Nonsynonymous</option>
+<option value="Synonymous">Synonymous</option>
+<option value="Start Gained">Start Gained</option>
+<option value="Start Lost">Start Lost</option>
+<option value="Stop Gained">Stop Gained</option>
+<option value="Stop Lost">Stop Lost</option>
+</select>
+ <p><label>Source:</label><p>
+    <!--<select id="inputSource" name="Source"value="<?php echo $_GET['Source']; ?>"  width="200" style="width: 200px" SIZE="6" MULTIPLE>-->
+    <select class="form-control" name="Source" value="<?php echo $_GET['Source']; ?>" id="inputSource">
+<option value="All">All</option>
+<option value="dbSNP">dbSNP</option>
+<option value="Sanger/UCLA">Sanger/UCLA</option>
+<option value="UTHSC-NWU">UTHSC-NWU</option>
+<option value="UTHSC-CITG">UTHSC_CITG</option>
+</select></p>
+        <!--<input type="submit" value="Submit">-->
+<!--</div>
+</div>-->
+</div>
+</div>
+<div id="content"></div>
+
+ </form>
+</div>
+
+ <div class="container">
+
+<?php
+/* Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+//$link = mysqli_connect("localhost", "root", "", "demo");
+ require "includes/db.inc";
+ error_reporting(0);
+// Check connection
+if($con === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+ 
+ //if(isset($_GET['submit'])){
+ if( isset( $_GET['Chromosome'] ) && strlen( trim( $_GET['Chromosome'] ) ) > 0 )
+ {
+ 		$Gene = $_GET['Gene'];
+ 		$all = 'All';
+        $mbstart = $_GET['mbstart'];
+        $mbend = $_GET['mbend'];
+        $Chromosome = $_GET['Chromosome'];
+        $Source = $_GET['Source'];
+        $Domain = $_GET['Domain'];
+        $choose_species = $_GET['choose_species'];
+        $laopo = "Gene=$Gene&Chromosome=$Chromosome&mbstart=$mbstart&mbend=$mbend&choose_species=$choose_species&Domain=$Domain&Source=$Source";
+        $status_colors = array("G" => "#e51629", "g" => "#fb0404", "T" => "#61be5c", "t" => "#44da3d", "A" => "#56cee0", "a" => "#61e3f6", "C" => "#edf010", "c" => "#fafd04");
+        
+}
+
+ if ( $Gene != false && $choose_species == 2 )
+		{
+    	$lines = file('annot/rat_genelist.txt');
+		}
+		elseif ( $Gene != false && $choose_species == 1 )
+		{
+		$lines = file('annot/mouse_genelist.txt');
+		}
+	foreach($lines as $line)
+		{
+  	if(stripos($line, $Gene) !== false)
+  		{
+    $found = true;
+    //echo "<div class='alert alert-success' role='alert'>";
+    //echo $line;
+    $delimiter = "\t";
+    $myArray = explode($delimiter, $line);
+    //2774 SNP(s) on Chr 9: 49.340661 - 49.407214 (Mb, mm10, Gene: Drd2)
+ //echo "<strong>".$num." SNP(s) found on Chr ".$myArray[1].": ".$myArray[2]." - ".$myArray[3]." (Mb, rn6, Gene: ".$myArray[0].")</strong>";   
+/**echo $myArray[0];
+print ", ";
+echo $myArray[1];
+print ", ";
+echo $myArray[2];
+print ", ";
+echo $myArray[3];**/
+//echo "</div>";
+  }
+}
+
+ 
+
+ 
+
+ 
+// Attempt select query execution
+//$sql = "SELECT * FROM persons";
+//$sql = "SELECT SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, RatSnpPattern.* FROM SnpAll INNER JOIN RatSnpPattern ON SnpAll.Id = RatSnpPattern.SnpId WHERE SnpAll.SpeciesId=2 AND SnpAll.Source='UTHSC-NWU' AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN 2 AND 5 order by SnpAll.Position ASC";
+//Rat filtering starts here	
+	if ( $Gene != false && $choose_species == 2 && $Source != $all && $Domain != $all)
+		{
+		//$sql = "SELECT SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.SpeciesId=2 AND SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Chromosome='$_GET[Chromosome]' AND SnpAllRat.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAllRat.Position ASC";
+		// was open $sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.SpeciesId=2 AND SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Domain='$_GET[Domain]' AND SnpAllRat.Gene='$_GET[Gene]' OR SnpAllRat.SnpName='$_GET[Gene]' order by SnpAllRat.Position ASC";
+		//$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.SpeciesId=2  AND SnpAllRat.Chromosome='$myArray[1]' AND SnpAllRat.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAllRat.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Domain='$_GET[Domain]' AND SnpAllRat.Chromosome='$myArray[1]' AND SnpAllRat.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAllRat.Position ASC";
+		}
+		elseif ( $Gene != false && $choose_species == 2 && $Source == $all && $Domain == $all)
+		{
+		//$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.SpeciesId=2  AND SnpAllRat.Gene='$_GET[Gene]' OR SnpAllRat.SnpName='$_GET[Gene]' order by SnpAllRat.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Chromosome='$myArray[1]' AND SnpAllRat.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAllRat.Position ASC";
+		}
+		elseif ( $Gene != false && $choose_species == 2 && $Source != $all && $Domain == $all)
+		{
+		//$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.SpeciesId=2  AND SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Gene='$_GET[Gene]' OR SnpAllRat.SnpName='$_GET[Gene]' order by SnpAllRat.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Chromosome='$myArray[1]' AND SnpAllRat.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAllRat.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 2 && $Source != $all && $Domain != $all)
+		{
+		//$sql = "SELECT SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.SpeciesId=2 AND SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Chromosome='$_GET[Chromosome]' AND SnpAllRat.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAllRat.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Domain='$_GET[Domain]' AND SnpAllRat.Chromosome='$_GET[Chromosome]' AND SnpAllRat.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAllRat.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 2 && $Source == $all && $Domain == $all)
+		{
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Chromosome='$_GET[Chromosome]' AND SnpAllRat.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAllRat.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 2 && $Source != $all && $Domain == $all)
+		{
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Source='$_GET[Source]' AND SnpAllRat.Chromosome='$_GET[Chromosome]' AND SnpAllRat.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAllRat.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 2 && $Source == $all && $Domain != $all)
+		{
+		$sql = "SELECT CASE WHEN SpeciesId = 2 THEN 'Rattus_norvegicus' ELSE 'Donno' END AS SpeciesId_text, SnpAllRat.Id , SnpAllRat.SnpName , SnpAllRat.Chromosome , SnpAllRat.Position , SnpAllRat.Gene , SnpAllRat.Transcript , SnpAllRat.Alleles , SnpAllRat.Source , SnpAllRat.ConservationScore, SnpAllRat.Domain, RatSnpPattern.* FROM SnpAllRat INNER JOIN RatSnpPattern ON SnpAllRat.Id = RatSnpPattern.SnpId WHERE SnpAllRat.Domain='$_GET[Domain]' AND SnpAllRat.Chromosome='$_GET[Chromosome]' AND SnpAllRat.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAllRat.Position ASC";
+		}
+//Mouse filtering starts here
+		elseif ( $Gene != false && $choose_species == 1 && $Source != $all && $Domain != $all)
+		{
+		//$sql = "SELECT SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1 AND SnpAll.Source='$_GET[Source]' AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAll.Position ASC";
+		// was open $sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1 AND SnpAll.Source='$_GET[Source]' AND SnpAll.Domain='$_GET[Domain]' AND SnpAll.Gene='$_GET[Gene]' OR SnpAll.SnpName='$_GET[Gene]' order by SnpAll.Position ASC";
+		//$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Chromosome='$myArray[1]' AND SnpAll.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAll.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1 AND SnpAll.Source='$_GET[Source]' AND SnpAll.Domain='$_GET[Domain]' AND SnpAll.Chromosome='$myArray[1]' AND SnpAll.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAll.Position ASC";
+		}
+		elseif ( $Gene != false && $choose_species == 1 && $Source == $all && $Domain == $all)
+		{
+		//$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Gene='$_GET[Gene]' OR SnpAll.SnpName='$_GET[Gene]' order by SnpAll.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Chromosome='$myArray[1]' AND SnpAll.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAll.Position ASC";
+		}
+		elseif ( $Gene != false && $choose_species == 1 && $Source != $all && $Domain == $all)
+		{
+		//$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Source='$_GET[Source]' AND SnpAll.Gene='$_GET[Gene]' OR SnpAll.SnpName='$_GET[Gene]' order by SnpAll.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Source='$_GET[Source]' AND SnpAll.Chromosome='$myArray[1]' AND SnpAll.Position BETWEEN '$myArray[2]' AND '$myArray[3]' order by SnpAll.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 1 && $Source != $all && $Domain != $all)
+		{
+		//$sql = "SELECT SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1 AND SnpAll.Source='$_GET[Source]' AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAll.Position ASC";
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1 AND SnpAll.Source='$_GET[Source]' AND SnpAll.Domain='$_GET[Domain]' AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAll.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 1 && $Source == $all && $Domain == $all)
+		{
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAll.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 1 && $Source != $all && $Domain == $all)
+		{
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Source='$_GET[Source]' AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAll.Position ASC";
+		}
+		elseif ( $Gene == false && $choose_species == 1 && $Source == $all && $Domain != $all)
+		{
+		$sql = "SELECT CASE WHEN SpeciesId = 1 THEN 'Mus_musculus' ELSE 'Donno' END AS SpeciesId_text, SnpAll.Id , SnpAll.SnpName , SnpAll.Chromosome , SnpAll.Position , SnpAll.Gene , SnpAll.Transcript , SnpAll.Alleles , SnpAll.Source , SnpAll.ConservationScore, SnpAll.Domain, SnpPattern.* FROM SnpAll INNER JOIN SnpPattern ON SnpAll.Id = SnpPattern.SnpId WHERE SnpAll.SpeciesId=1  AND SnpAll.Domain='$_GET[Domain]' AND SnpAll.Chromosome='$_GET[Chromosome]' AND SnpAll.Position BETWEEN '$_GET[mbstart]' AND '$_GET[mbend]' order by SnpAll.Position ASC";
+		}
+
+	
+$result = mysql_query($sql, $conn);
+$num = mysql_num_rows($result);
+//@@@@@@@@@@
+if ( $Gene != false && $choose_species == 2 )
+{
+//echo "<div class='alert alert-success' role='alert'>";
+//echo "<div class='alert alert-secondary' role='alert'>";
+echo "<div class='alert alert-warning' role='alert'>";
+echo "<strong>".$num." SNP(s) found on Chr ".$myArray[1].": ".$myArray[2]." - ".$myArray[3]." (Mb, <u>Rat rn6</u>, Gene: ".$myArray[0].") Source: ".$Source."</strong>"; 
+echo "</div>";
+}
+elseif ( $Gene != false && $choose_species == 1 )
+{
+echo "<div class='alert alert-warning' role='alert'>";
+echo "<strong>".$num." SNP(s) found on Chr ".$myArray[1].": ".$myArray[2]." - ".$myArray[3]." (Mb, <u>Mouse mm10</u>, Gene: ".$myArray[0].") Source: ".$Source."</strong>"; 
+echo "</div>";
+}
+// need to check on this below URGENT!!!
+elseif ( $Gene == false && $choose_species == 1 )
+{
+echo "<div class='alert alert-warning' role='alert'>";
+echo "<strong>".$num." SNP(s) found on Chr ".$Chromosome.": ".$mbstart." - ".$mbend." (Mb, <u>Mouse mm10</u>) Source: ".$Source."</strong>"; 
+echo "</div>";
+}
+elseif ( $Gene == false && $choose_species == 2 )
+{
+echo "<div class='alert alert-warning' role='alert'>";
+echo "<strong>".$num." SNP(s) found on Chr ".$Chromosome.": ".$mbstart." - ".$mbend." (Mb, <u>Rat rn6</u>) Source: ".$Source."</strong>"; 
+echo "</div>";
+}
+//@@@@@@@@@
+
+
+	
+if($result = mysqli_query($con, $sql)){
+    if(mysqli_num_rows($result) > 0 && $choose_species == 2)
+    {
+    echo "<div class='row'>";
+    
+    
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    /**
+  if ( $Gene != false && $choose_species == 2 )
+  {
+    $lines = file('annot/rat_genelist.txt');
+    }
+foreach($lines as $line)
+{
+  //if(strpos($line, $Symbol) !== false)
+  if(stripos($line, $Gene) !== false)
+  {
+    $found = true;
+    echo "<div class='alert alert-success' role='alert'>";
+    //echo $line;
+    $delimiter = "\t";
+    $myArray = explode($delimiter, $line);
+echo $myArray[0];
+print ", ";
+echo $myArray[1];
+print ", ";
+echo $myArray[2];
+print ", ";
+echo $myArray[3];
+  }
+}
+**/
+   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                         
+                    //echo "<p>";
+                    //echo("<strong>" .$num . " SNP(s) on Chromosome " .$Chromosome. ": " .$mbstart. " - " .$mbend. "</strong>");
+                    //echo "</p>";
+     
+    
+    echo "</div>";
+    echo "<div class='row'>";
+        //echo "<table id='dtBasicExample' class='table table-striped table-bordered table-sm' cellspacing='0' width='100%'>";
+        echo "<table id='test' class='table table-striped table-bordered table-sm' cellspacing='0' width='100%'>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    //echo "<th class='th-sm'>Top Related Gene<i class='fa fa-sort float-right' aria-hidden='true'></i></th>";
+                    echo "<th><span>BN</span></th>";
+                    echo "<th><span>F344</span></th>";
+                    echo "<th><span>ACI</span></th>";
+                    echo "<th><span>BBDP</span></th>";
+                    echo "<th><span>FHH</span></th>";
+                    echo "<th><span>FHL</span></th>";
+                    echo "<th><span>GK</span></th>";
+                    echo "<th><span>LE</span></th>";
+                    echo "<th><span>LEW</span></th>";
+                    echo "<th><span>LH</span></th>";
+                    echo "<th><span>LL</span></th>";
+                    echo "<th><span>LN</span></th>";
+                    echo "<th><span>MHS</span></th>";
+                    echo "<th><span>MNS</span></th>";
+                    echo "<th><span>SBH</span></th>";
+                    echo "<th><span>SBN</span></th>";
+                    echo "<th><span>SHR</span></th>";
+                    echo "<th><span>SHRSP</span></th>";
+                    echo "<th><span>SR</span></th>";
+                    echo "<th><span>SS</span></th>";
+                    echo "<th><span>WAG</span></th>";
+                    echo "<th><span>WLI</span></th>";
+                    echo "<th><span>WMI</span></th>";
+                    echo "<th><span>WKY</span></th>";
+                    //echo "<th class='th-sm'>Species<i class='fa fa-sort float-right' aria-hidden='true'></i></th>";
+                    echo "<th>Chr</th>";
+                    echo "<th>Mb</th>";
+                    echo "<th>Alleles</th>";
+                    echo "<th>ConScore</th>";
+                    echo "<th>Gene</th>";
+                    echo "<th>Transcript</th>";
+                    echo "<th>Domain</th>";
+                    echo "<th>Source</th>";
+                    echo "<th>SNP ID</th>";
+                    echo "<td>View</td>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "</div>";
+                    echo "<div>";
+            
+            
+            
+            //Include the PS_Pagination class
+    	
+					include('includes/ps_pagination.html');
+
+                    //------------PAGINATION MODULE START
+
+                    /*
+                    * Create a PS_Pagination object
+                    *
+                    * $conn = MySQL connection object
+                    * $sql = SQl Query to paginate
+                    * 10 = Number of rows per page
+                    * 5 = Number of links
+                    * "param1=valu1&param2=value2" = You can append your own parameters to paginations links
+                    */
+                    //$pager = new PS_Pagination($conn, $sql, 30, 5, "param1=valu1&param2=value2");
+                    //$pager = new PS_Pagination($conn, $sql, 10, 5, "param1=valu1&param2=value2", $result);
+                    //$pager = new PS_Pagination($conn, $sql, 10, 5, $result);
+                    $pager = new PS_Pagination($conn, $sql, 300, 10, $laopo);
+
+                    /*
+                    * Enable debugging if you want o view query errors
+                    */
+                    $pager->setDebug(true);
+
+                    /*
+                    * The paginate() function returns a mysql result set
+                    * or false if no rows are returned by the query
+                    */
+                    $rs = $pager->paginate();
+
+
+                    //Display the full navigation in one go
+                    echo $pager->renderFullNav();
+                    echo "<p>\n";
+                    echo "<div>";
+                    //---echo "<div align='left'>";
+
+                    //------------PAGINATION MODULE ENDS
+                     //----------PAGINATION INSERT START
+
+                    $rs = $pager->paginate();
+                    if(!$rs);
+            
+            
+            
+        //while($row = mysqli_fetch_array($result)){
+         while($row = mysql_fetch_assoc($rs)) {
+         
+					$f1= $row['BN'];
+					$f2= $row['F344'];
+					$f3= $row['ACI'];
+					$f4= $row['BBDP'];
+					$f5= $row['FHH'];
+					$f6= $row['FHL'];
+					$f7= $row['GK'];
+					$f8= $row['LE'];
+					$f9= $row['LEW'];
+					$f10= $row['LH'];
+					$f11= $row['LL'];
+					$f12= $row['LN'];
+					$f13= $row['MHS'];
+					$f14= $row['MNS'];
+					$f15= $row['SBH'];
+					$f16= $row['SBN'];
+					$f17= $row['SHR'];
+					$f18= $row['SHRSP'];
+					$f19= $row['SR'];
+					$f20= $row['SS'];
+					$f21= $row['WAG'];
+					$f22= $row['WLI'];
+					$f23= $row['WMI'];
+					$f24= $row['WKY'];
+         
+echo "<tr><th style='background-color: ". $status_colors[$f1] ."'>".$row['BN'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f2] ."'>".$row['F344'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f3] ."'>".$row['ACI'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f4] ."'>".$row['BBDP'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f5] ."'>".$row['FHH'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f6] ."'>".$row['FHL'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f7] ."'>".$row['GK'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f8] ."'>".$row['LE'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f9] ."'>".$row['LEW'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f10] ."'>".$row['LH'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f11] ."'>".$row['LL'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f12] ."'>".$row['LN'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f13] ."'>".$row['MHS'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f14] ."'>".$row['MNS'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f15] ."'>".$row['SBH'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f16] ."'>".$row['SBN'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f17] ."'>".$row['SHR'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f18] ."'>".$row['SHRSP'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f19] ."'>".$row['SR'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f20] ."'>".$row['SS'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f21] ."'>".$row['WAG'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f22] ."'>".$row['WLI'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f23] ."'>".$row['WMI'] ."</th>
+ 					<th style='background-color: ". $status_colors[$f24] ."'>".$row['WKY'] ."</th>
+ 					<th>".$row['Chromosome'] . "</th>
+ 					<th><small>".$row['Position'] ."</small></th>
+ 					<th>".$row['Alleles'] ."</th>
+ 					<th>".$row['ConservationScore'] ."</th>
+ 					<th>".$row['Gene'] ."</th>
+ 					<th><a href=https://useast.ensembl.org/rattus_norvegicus/Gene/Summary?g=". $row['Transcript'] ."&db=core  target='_blank' '><small>". $row['Transcript'] ."</small></a></th>
+ 					<th>".$row['Domain'] ."</th>
+ 					<th><small>".$row['Source'] ."</small></th>
+ 					<th><a href=https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=". $row['SnpName'] ." target='_blank' title='View in dbSNP''><small>". $row['SnpName'] ."</small></a></th>
+ 					<td><a href=https://useast.ensembl.org/" . $row['SpeciesId_text']. "/Variation/Explore?db=core;v=". $row['SnpName'] ." target='_blank' title='Ensembl''><img src='img/ensembl.png' width=12 height=12></a>
+ 					&nbsp;<a href=https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=". $row['SnpName'] ."  target='_blank' title='dbSNP''><img src='img/dbsnp.png' width=12 height=12></a>
+ 					&nbsp;<a href=https://www.ebi.ac.uk/eva/?variant&accessionID=". $row['SnpName'] ."&species=rnorvegicus_60  target='_blank' title='EVA''><img src='img/eva.png' width=12 height=12></a></td>
+ 					</tr>";
+        }
+        echo "</table>";
+         echo "<div>";
+        
+            //----------PAGINATION MODULE START
+
+                        /*
+                        * Or you can display the individual links for more
+                        * control over HTML rendering.
+                        *
+                        */
+
+                        //Display the link to first page: First
+                        echo $pager->renderFirst();
+
+                        //Display the link to previous page: <<
+                        echo $pager->renderPrev();
+
+                        /*
+                        * Display page links: 1 2 3
+                        * $prefix = Will be prepended to the page link (optional)
+                        * $suffix = Will be appended to the page link (optional)
+                        *
+                        */
+                        echo $pager->renderNav('<span>', '</span>');
+
+                        //Display the link to next page: >>
+                        echo $pager->renderNext();
+
+                        //Display the link to last page: Last
+                        echo $pager->renderLast();
+
+                        //----------PAGINATION MODULE ENDS
+                }        
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+          elseif ( mysqli_num_rows($result) >0 && $choose_species == 1)
+          			{
+          			
+				echo "<div class='row'>";
+				echo "<p></p>";
+				echo "<HR>";
+
+
+                    //inserted here
+                    echo "<table id='dtBasicExample' class='table table-striped table-bordered table-sm' cellspacing='0' width='100%'>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    //echo "<th class='th-sm'>Top Related Gene<i class='fa fa-sort float-right' aria-hidden='true'></i></th>";
+                    echo "<th><span><small>C57BL/6J</small></span></th>";
+                    echo "<th><span><small>DBA/2J</small></span></th>";
+                    echo "<th><span><small>A/J</small></span></th>";
+                    echo "<th><span><small>129S1/SvImJ</small></span></th>";
+                    echo "<th><span><small>NOD/ShiLtJ</small></span></th>";
+                    echo "<th><span><small>NZO/HlLtJ</small></span></th>";
+                    echo "<th><span><small>WSB/EiJ</small></span></th>";
+                    echo "<th><span><small>PWD/PhJ</small></span></th>";
+                    echo "<th><span><small>CAST/EiJ</small></span></th>";
+                    //echo "<th class='th-sm'>Species<i class='fa fa-sort float-right' aria-hidden='true'></i></th>";
+                    echo "<th>Chr</th>";
+                    echo "<th>Mb</th>";
+                    echo "<th>Alleles</th>";
+                    echo "<th>ConScore</th>";
+                    echo "<th>Source</th>";
+                    echo "<th>SNP ID</th>";
+                    echo "<td>View</td>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "</div>";
+                    echo "<div>";
+                    
+    	//Include the PS_Pagination class
+    	
+					include('includes/ps_pagination.html');
+
+                    //------------PAGINATION MODULE START
+
+                    /*
+                    * Create a PS_Pagination object
+                    *
+                    * $conn = MySQL connection object
+                    * $sql = SQl Query to paginate
+                    * 10 = Number of rows per page
+                    * 5 = Number of links
+                    * "param1=valu1&param2=value2" = You can append your own parameters to paginations links
+                    */
+                    //$pager = new PS_Pagination($conn, $sql, 30, 5, "param1=valu1&param2=value2");
+                    //$pager = new PS_Pagination($conn, $sql, 10, 5, "param1=valu1&param2=value2", $result);
+                    //$pager = new PS_Pagination($conn, $sql, 10, 5, $result);
+                    $pager = new PS_Pagination($conn, $sql, 300, 10, $laopo);
+
+                    /*
+                    * Enable debugging if you want o view query errors
+                    */
+                    $pager->setDebug(true);
+
+                    /*
+                    * The paginate() function returns a mysql result set
+                    * or false if no rows are returned by the query
+                    */
+                    $rs = $pager->paginate();
+
+
+                    //Display the full navigation in one go
+                    echo $pager->renderFullNav();
+                    echo "<p>\n";
+                    echo "<div>";
+                    //---echo "<div align='left'>";
+
+                    //------------PAGINATION MODULE ENDS
+
+
+                    //----------PAGINATION INSERT START
+
+                    $rs = $pager->paginate();
+                    if(!$rs);
+                    //if(!$rs) die(mysql_error());
+                    while($row = mysql_fetch_assoc($rs)) {
+                     //----------PAGINATION INSERT ENDS
+					$f1= $row['C57BL/6J'];
+					$f2= $row['DBA/2J'];
+					$f3= $row['A/J'];
+					$f4= $row['129S1/SvImJ'];
+					$f5= $row['NOD/ShiLtJ'];
+					$f6= $row['NZO/HlLtJ'];
+					$f7= $row['WSB/EiJ'];
+					$f8= $row['PWD/PhJ'];
+					$f9= $row['CAST/EiJ'];
+                    //echo "<tr></td><td><a href=http://172.21.216.117:4004/cosinesim/?word=". $row['Symbol'] ." class='badge badge-default' target='_blank' '>Chilibot</a> | <a href=http://www.geneweaver.org/index.php?action=search&q[]=". $row['Symbol'] ." class='badge badge-info' target='_blank' '>GeneWeaver</a></td><td><a href=http://gn2.genenetwork.org/show_trait?trait_id=". $row['ProbeSet'] ."&dataset=" . $row['ProbeSetFreeze'] ." class='badge badge-primary' target='_blank' '>" . $row['ProbeSet'] ."</a></td><td>" . $row['Species'] . "</td><td>" . $row['Tissue'] . "</td><td>" .$row['InbredSet'] ."</td><td>" .$row['Symbol'] ."</td><td>" . $row['description'] ."</td><td>Chr".$row['Chr'] .": " .$row['Mb'] ."</td><td>".$row['LRS'] ."</td><td>" .$row['Mean'] ."</td></tr>";
+                    //echo "<tr></td><td><a href=http://172.21.216.117:4004/cosinesim/?word=". $row['Symbol'] ." class='badge badge-default' target='_blank' '>Chilibot</a> | <a href=http://www.geneweaver.org/index.php?action=search&q[]=". $row['Symbol'] ." class='badge badge-info' target='_blank' '>GeneWeaver</a></td><td><a href=http://gn2.genenetwork.org/show_trait?trait_id=". $row['ProbeSet'] ."&dataset=" . $row['ProbeSetFreeze'] ." class='badge badge-primary' target='_blank' '>" . $row['ProbeSet'] ."</a></td><td>" . $row['Species'] . "</td><td>" . $row['Tissue'] . "</td><td>" .$row['InbredSet'] ."</td><td>" .$row['Symbol'] ."</td><td>" . $row['description'] ."</td><td>Chr".$row['Chr'] .":" .$row['Mb'] * 1000000 ."-". $row['Probe_set_Blat_Mb_end'] * 1000000 ."</td><td>".$row['FORMAT(LRS,2)'] ."</td><td>" .$row['FORMAT(Mean,2)'] ."</td></tr>";
+                    // GOOD: echo "<tr><td><a href=http://gn2.genenetwork.org/show_trait?trait_id=". $row['ProbeSet'] ."&dataset=" . $row['ProbeSetFreeze'] ." class='badge badge-primary' target='_blank' '>" . $row['ProbeSet'] ."</a></td><td>" . $row['Species'] . "</td><td>" . $row['Tissue'] . "</td><td>" .$row['InbredSet'] ."</td><td>" .$row['Symbol'] ."</td><td>" . $row['description'] ."</td><td>Chr".$row['Chr'] .":" .$row['Mb'] * 1000000 ."-". $row['Probe_set_Blat_Mb_end'] * 1000000 ."</td><td>".$row['FORMAT(LRS,2)'] ."</td><td>" .$row['FORMAT(Mean,2)'] ."</td></tr>";
+ 					echo "<tr><td style='background-color: ". $status_colors[$f1] ."'>".$row['C57BL/6J'] ."</td><td style='background-color: ". $status_colors[$f2] ."'>".$row['DBA/2J'] ."</td><td style='background-color: ". $status_colors[$f3] ."'>".$row['A/J'] ."</td><td style='background-color: ". $status_colors[$f4] ."'>".$row['129S1/SvImJ'] ."</td><td style='background-color: ". $status_colors[$f5] ."'>"
+ 					. $row['NOD/ShiLtJ'] ."</td><td style='background-color: ". $status_colors[$f6] ."'>".$row['NZO/HlLtJ'] ."</td><td style='background-color: ". $status_colors[$f7] ."'>".$row['WSB/EiJ'] ."</td><td style='background-color: ". $status_colors[$f8] ."'>".$row['PWD/PhJ'] ."</td><td style='background-color: ". $status_colors[$f9] ."'>".$row['CAST/EiJ'] ."</td><td>" . $row['Chromosome'] . "</td><td>" .$row['Position'] ."</td><td>"  .$row['Alleles'] ."</td><td>".$row['ConservationScore'] ."</td><td><small>" 
+ 					. $row['Source'] ."</small></td>
+ 					<td><a href=https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=". $row['SnpName'] ." target='_blank' title='View in dbSNP''><small>". $row['SnpName'] ."</small></a></td>
+ 					<td><a href=https://useast.ensembl.org/" . $row['SpeciesId_text']. "/Variation/Explore?db=core;v=". $row['SnpName'] ." target='_blank' title='Ensembl''><img src='img/ensembl.png' width=12 height=12></a>
+ 					&nbsp;<a href=https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=". $row['SnpName'] ."  target='_blank' title='dbSNP''><img src='img/dbsnp.png' width=12 height=12></a>
+ 					&nbsp;<a href=https://www.ebi.ac.uk/eva/?variant&accessionID=". $row['SnpName'] ."&species=mmusculus_grcm38  target='_blank' title='EVA''><img src='img/eva.png' width=12 height=12></a></td></tr>";
+ 					
+                            }
+                            echo "</table>";
+                            
+                            echo "<div>";
+
+                        //----------PAGINATION MODULE START
+
+                        /*
+                        * Or you can display the individual links for more
+                        * control over HTML rendering.
+                        *
+                        */
+
+                        //Display the link to first page: First
+                        echo $pager->renderFirst();
+
+                        //Display the link to previous page: <<
+                        echo $pager->renderPrev();
+
+                        /*
+                        * Display page links: 1 2 3
+                        * $prefix = Will be prepended to the page link (optional)
+                        * $suffix = Will be appended to the page link (optional)
+                        *
+                        */
+                        echo $pager->renderNav('<span>', '</span>');
+
+                        //Display the link to next page: >>
+                        echo $pager->renderNext();
+
+                        //Display the link to last page: Last
+                        echo $pager->renderLast();
+
+                        //----------PAGINATION MODULE ENDS   
+          
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+        // Free result set
+        mysqli_free_result($result);
+    } 
+    
+    else{
+        echo "No records matching your query were found.";
+    	}
+    	
+		} 
+	
+	//else{
+    //echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+//}
+ 
+// Close connection
+mysqli_close($con);
+echo "</div>";
+echo "</div>";
+echo "</div>";
+include 'footer.html';
+?>
+
+
+
+
+<!-- Footer -->
+<!--<footer class="page-footer font-small blue">-->
+
+  <!-- Copyright -->
+  <!--<div class="footer-copyright text-center py-3">OPAR University of Tennessee Health Science Center
+  <p class="pull-right"><a href="#">Back to top</a></p>
+  </div>-->
+  <!-- Copyright -->
+
+<!--</footer>-->
+<!-- Footer -->
+
+    <!-- /Start your project here-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <!--<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>-->
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/pagination.js"></script>
+ <!--</div>-->
+  <!--THIS SCRIPT BELOW Hides the empty cells but for now is slow over 300. Also need to change th to td en view ex. echo "<td>View</td>"; to avoid View icons to dissaper-->
+  <script>
+ $('table').each(function(a, tbl) {
+    var currentTableRows = $(this).find("tr").length - 1;
+    $(tbl).find('th').each(function(i) {
+        var removeVal = 0;
+        var currentTable = $(this).parents('table');
+
+        var tds = currentTable.find('tr th:nth-child(' + (i + 1) + ')');
+        tds.each(function(j) { if ($(this).text().trim() == '') removeVal++; });
+        
+        if (removeVal == currentTableRows) {
+            $(this).hide();
+            tds.hide();
+        }
+    });
+});
+ </script>
+  <!--THIS SCRIPT BELOW TRIGGERS THE <DIV1 Processing Please wait from FORM ID inputLGEx-->
+<script>
+$(document).ready(function() {
+    $('#div2').hide();
+    $('#inputLGEx').on('submit', function() {
+            $('#div2').toggle(300);
+    });
+});
+</script>
+<script type="text/javascript" src="intro.js-2.9.3/intro.js"></script>
+</body>
+</html>
